@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>React Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>React Calculator</h1>
+    <div class="container">
+       
+       <div class="input-container">
+          <input type="text" name="num1" id="num1" placeholder="Num1" required><br><br>
+          <input type="text" name="num2" id="num2" placeholder="Num 2" required><br><br>
+       </div>
+       <div class="maths">
+            <button claa="add" for="addition">+</button>
+            <button class="sub" for="subtraction">-</button>
+            <button class="mul" for="Multiplication">*</button>
+            <button  class="div" for="devision">/</button>
+       </div>
+    
+    <p id="error" class="hide">Error : Num1 cannot be empty</p>
+    <div class="result-container hide" id="contresult">
+        <p>Result = <span></span></p>
+        <p id="sucess">Success : Your result is shown above!</p><br><br>
+  </div>
+    <script src="script.js"></script>
+</body>
+</html>
