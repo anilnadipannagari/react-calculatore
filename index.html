@@ -2,32 +2,105 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>React Calculator</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Simple Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f9f9f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .calculator {
+            background: #fff;
+            padding: 20px 25px 25px 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            width: 260px;
+        }
+        .display {
+            width: 100%;
+            height: 48px;
+            font-size: 1.5em;
+            text-align: right;
+            margin-bottom: 15px;
+            padding: 8px;
+            border: none;
+            background: #eee;
+            border-radius: 5px;
+        }
+        .buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        .btn {
+            padding: 15px 0;
+            font-size: 1.1em;
+            border: none;
+            border-radius: 5px;
+            background: #e0e0e0;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn.operator {
+            background: #ffd966;
+        }
+        .btn.equal {
+            background: #76d7c4;
+            color: #fff;
+        }
+        .btn.clear {
+            background: #ff7675;
+            color: #fff;
+        }
+        .btn:active {
+            background: #ccc;
+        }
+    </style>
 </head>
 <body>
-    <h1>React Calculator</h1>
-    <div class="container">
-       
-       <div class="input-container">
-          <input type="text" name="num1" id="num1" placeholder="Num1" required><br><br>
-          <input type="text" name="num2" id="num2" placeholder="Num 2" required><br><br>
-       </div>
-       <div class="maths">
-            <button claa="add" for="addition">+</button>
-            <button class="sub" for="subtraction">-</button>
-            <button class="mul" for="Multiplication">*</button>
-            <button  class="div" for="devision">/</button>
-       </div>
-    
-    <p id="error" class="hide">Error : Num1 cannot be empty</p>
-    <div class="result-container hide" id="contresult">
-        <p>Result = <span></span></p>
-        <p id="sucess">Success : Your result is shown above!</p><br><br>
-  </div>
-    <script src="script.js"></script>
+    <div class="calculator">
+        <input type="text" class="display" id="display" disabled>
+        <div class="buttons">
+            <button class="btn" onclick="append('7')">7</button>
+            <button class="btn" onclick="append('8')">8</button>
+            <button class="btn" onclick="append('9')">9</button>
+            <button class="btn operator" onclick="append('/')">÷</button>
+
+            <button class="btn" onclick="append('4')">4</button>
+            <button class="btn" onclick="append('5')">5</button>
+            <button class="btn" onclick="append('6')">6</button>
+            <button class="btn operator" onclick="append('*')">×</button>
+
+            <button class="btn" onclick="append('1')">1</button>
+            <button class="btn" onclick="append('2')">2</button>
+            <button class="btn" onclick="append('3')">3</button>
+            <button class="btn operator" onclick="append('-')">−</button>
+
+            <button class="btn" onclick="append('0')">0</button>
+            <button class="btn" onclick="append('.')">.</button>
+            <button class="btn clear" onclick="clearDisplay()">C</button>
+            <button class="btn operator" onclick="append('+')">+</button>
+        </div>
+        <button class="btn equal" style="width:100%; margin-top:10px;" onclick="calculate()">=</button>
+    </div>
+    <script>
+        const display = document.getElementById('display');
+        function append(char) {
+            display.value += char;
+        }
+        function clearDisplay() {
+            display.value = '';
+        }
+        function calculate() {
+            try {
+                display.value = eval(display.value) || '';
+            } catch (e) {
+                display.value = 'Error';
+            }
+        }
+    </script>
 </body>
 </html>
